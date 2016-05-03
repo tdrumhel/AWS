@@ -1,3 +1,5 @@
+#This File Sucks
+
 print "Hello"
 
 s = raw_input('Input a number')
