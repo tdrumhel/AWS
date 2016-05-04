@@ -1,0 +1,8 @@
+from urllib import Requests, urlopen, URLError
+
+
+url = 'http://finance.yahoo.com/webservice/v1/symbols/BAC,COF,VRX/quote?format=json&view=detail'
+
+request = Request(url)
+response =urlopen(request)
+printable = response.read()
