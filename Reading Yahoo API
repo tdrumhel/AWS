@@ -9,3 +9,7 @@ response =urlopen(request)
 printable = response.read()
 
 printable2 = json.loads(printable)
+
+f = open('stock_data.txt', 'w')
+f.write(str(printable2))
+f.close()
