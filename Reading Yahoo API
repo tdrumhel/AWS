@@ -7,3 +7,5 @@ url = 'http://finance.yahoo.com/webservice/v1/symbols/BAC,COF,VRX/quote?format=j
 request = Request(url)
 response =urlopen(request)
 printable = response.read()
+
+printable2 = json.loads(printable)
