@@ -2,7 +2,7 @@ def Historical_Stock_Prices(tickers):
 
     import pandas.io.data as web  #Some message comes up about this going away with future updates
     import datetime
-    from matplotlib as mp
+    import matplotlib as mp
 
     start_date = datetime.date(2016,01,01)
     end_date = datetime.date(2016,04,30)
@@ -13,3 +13,7 @@ def Historical_Stock_Prices(tickers):
 
     for key in data_list:
         data_list[key] = web.get_data_yahoo(key,start_date, end_date)
+
+    data_list['BAC'].to_csv('BAC.csv')
+    data_list['COF'].to_csv('COF.csv')
+    data_list['VRX'].to_csv('VRX.csv')
