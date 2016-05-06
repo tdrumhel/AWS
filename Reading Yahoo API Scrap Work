@@ -1,0 +1,42 @@
+from urllib2 import Request, urlopen, URLError
+import json
+
+
+url = 'http://finance.yahoo.com/webservice/v1/symbols/BAC,COF,VRX/quote?format=json&view=detail'
+
+request = Request(url)
+response =urlopen(request)
+printable = response.read()
+
+printable2 = json.loads(printable)
+
+f = open('stock_data.txt', 'w')
+f.write(str(printable2))
+f.close()
+
+https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20csv%20where%20url%3D%22http%3A%2F%2Ffinance.yahoo.com%2Fd%2Fquotes.csv%3Fe%3D.csv%26f%3Dnl1d1t1%26s%3Dusdeur%3DX%22%3B&format=json&callback=
+
+
+keys = printable2.keys()
+
+for key in keys:
+    for item in printable2[key]:
+        print item
+
+1st Level Key - "resource"
+2nd Level Key - "classname"
+3rd Level Key - "fields"  #this is a list of dicts
+
+############Using Pandas#################
+import pandas.io.data as web  #Some message comes up about this going away with future updates
+import datetime
+
+tickers = []
+tickers.append('BAC')
+tickers.append('COF')
+tickers.append('VRX')
+start_date = datetime.datetime(2016,04,01)
+end_date = datetime.datetime(2016,04,30)
+
+
+data = web.get_data_yahoo(tickers,start_date, end_date)
