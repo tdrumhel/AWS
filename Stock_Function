@@ -17,3 +17,10 @@ def Historical_Stock_Prices(tickers):
     data_list['BAC'].to_csv('BAC.csv')
     data_list['COF'].to_csv('COF.csv')
     data_list['VRX'].to_csv('VRX.csv')
+
+
+BAC_Plot = pd.DataFrame(data_list['BAC'],columns = ['Date', 'Close'])
+BAC_Plot.plot(legend = False)
+plt.show()
+
+COF_Plot = pd.DataFrame(data_list['COF'],columns = ['Date', 'Close'])
