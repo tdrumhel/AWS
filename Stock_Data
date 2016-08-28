@@ -1,0 +1,6 @@
+def Stock_Data(ticker, start_date, end_date, source = 'google')
+
+    import pandas.io.data as web
+    import datetime
+
+    return web.DataReader(ticker, source, start_date, end_date)

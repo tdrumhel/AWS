@@ -1,0 +1,39 @@
+import Stock_Data
+import numpy as np
+from matplotlib import pyplot as plt
+import pandas as pd
+
+f = Stock_Data.Stock_Data("COF", "2010-01-01", "2016-08-01")
+
+f["Date"] = f.index
+f['40_Day'] = pd.rolling_mean(f["Close"],40)
+f['80_Day'] = pd.rolling_mean(f["Close"],80)
+f['120_Day'] = pd.rolling_mean(f["Close"],120)
+
+Dates = f["Date"]
+Close = f["Close"]
+Forty_Day = f["40_Day"]
+Eighty_Day = f["80_Day"]
+OneTwenty_Day = f["120_Day"]
+
+print f
+
+
+#plt.plot(Dates, Close)
+#plt.plot(Dates, Forty_Day)
+#plt.plot(Dates, Eighty_Day)
+#plt.plot(Dates, OneTwenty_Day)
+#plt.show()
+
+
+for Date in f["Date"]:
+
+    portfolio = {}
+
+    if f["Close"][Date] > f["40_Day"][Date]:
+        portfolio[Date] = ["Buy",100*f["Close"][Date]]
+    print Date, f["Close"], f["40_Day"]
+    #if f["Close"][Date] <= f["120_Day"][Date]:
+    #    sold_stock += 100*f["Close"][Date]
+
+print portfolio
