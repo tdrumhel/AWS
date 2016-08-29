@@ -1,0 +1,23 @@
+import numpy as np
+import datetime
+
+prev_key = '1900-01-01'
+keys = transactions.keys()
+delta_list = []
+
+#Creates list of profit by year and tax category
+for key in sorted(keys):
+    if transactions[key][1] == 'Buy':
+        prev_key = key
+    else:
+        if ((key - prev_key)/ np.timedelta64(1, 'D')).astype(int) > 364:
+            delta_list.append((key.year,'Long-Term', (transactions[key][0] - transactions[prev_key][0])*100))
+        else:
+            delta_list.append((key.year,'Short-Term', (transactions[key][0] - transactions[prev_key][0])*100))
+
+#Aggregates profit by year and tax category
+year = []
+
+for
+
+print delta_list
