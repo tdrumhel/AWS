@@ -1,0 +1,19 @@
+ticker_list = ['AAPL', 'GOOG','VRX', 'COF','BAC', 'MO', 'D', 'DIS', 'RGR']
+Start_Date = '2006-01-01'
+End_Date = '2016-08-01'
+Profit_By_Stock = []
+
+for ticker in ticker_list:
+    f = Stock_Data(ticker, Start_Date, End_Date)
+    Profit, Avg_Purch, Buy_Count, Sell_Count, transactions = Rolling_Average_Intersection(f)
+    Profit_By_Stock.append((ticker,Profit,Avg_Purch))
+
+summ = 0
+avg_purch = 0
+
+for row in Profit_By_Stock:
+    summ += row[1]
+    avg_purch += row[2]
+
+Profit_By_Stock.append(('Total',summ,avg_purch))
+print Profit_By_Stock
